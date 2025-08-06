@@ -9,11 +9,11 @@
 </head>
 
 <div class="container mt-4">
-    <div class="card mb-4">
-        <div class="card-header">Meeting Calendar</div>
+        <div class="card mb-4">
+         <!--<div class="card-header">Meeting Calendar</div>  -->
         <div class="card-body">
-            <div id="calendar"></div>
-        </div>
+   <!--    <div id="calendar"></div>  -->
+        </div> 
     </div>
 
     <!-- Add Meeting Button -->
@@ -26,7 +26,7 @@
     <!-- Modal Form -->
     <div class="modal fade" id="meetingModal" tabindex="-1" role="dialog" aria-labelledby="meetingModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document"> 
-            <form action="{{ route('products.store') }}" method="POST">
+        <!--    <form action="{{ route('dashboard.store') }}" method="POST">  --!>
                 @csrf
                 <div class="modal-content">
                     <div class="modal-header">

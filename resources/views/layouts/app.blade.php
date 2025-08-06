@@ -20,15 +20,7 @@
 
   <!-- Custom styles for this template -->
   <link href="{{ asset('admin_assets/css/sb-admin-2.min.css') }}" rel="stylesheet">
-  <script>
-    const meetings = @json($meetings->map(function($meeting) {
-        return [
-            'title' => $meeting->meeting_title . ' - ' . $meeting->organized_by,
-            'start' => $meeting->meeting_time,
-            'location' => $meeting->meeting_location
-        ];
-    }));
-</script>
+
 </head>
 <body id="page-top">
 

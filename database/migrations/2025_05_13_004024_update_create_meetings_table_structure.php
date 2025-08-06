@@ -4,13 +4,13 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateCreateProductsTableStructure extends Migration
+class UpdateCreatemeetingsTableStructure extends Migration
 {
     public function up()
     {
-        Schema::table('products', function (Blueprint $table) {
+        Schema::table('meetings', function (Blueprint $table) {
             // Hapus kolom lama
-            $table->dropColumn(['title', 'price', 'product_code', 'description']);
+            $table->dropColumn(['title', 'price', 'meeting_code', 'description']);
 
             // Tambah kolom baru
             $table->string('meeting_location')->nullable();
@@ -22,11 +22,11 @@ class UpdateCreateProductsTableStructure extends Migration
 
     public function down()
     {
-        Schema::table('products', function (Blueprint $table) {
+        Schema::table('meetings', function (Blueprint $table) {
             // Kembalikan kolom lama
             $table->string('title')->nullable();
             $table->string('price')->nullable();
-            $table->string('product_code')->nullable();
+            $table->string('meeting_code')->nullable();
             $table->text('description')->nullable();
 
             // Hapus kolom baru

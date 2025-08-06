@@ -28,10 +28,10 @@
   </li>
 
   <!-- Nav Item - Product -->
-  <li class="nav-item {{ request()->routeIs('products') ? 'active' : '' }}">
-    <a class="nav-link" href="{{ route('products') }}">
+  <li class="nav-item {{ request()->routeIs('dashboard') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('dashboard') }}">
       <i class="fas fa-fw fa-box"></i>
-      <span>Product</span>
+      <span>View</span>
     </a>
   </li>
 

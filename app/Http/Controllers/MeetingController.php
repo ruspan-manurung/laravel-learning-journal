@@ -3,19 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Product;
+use App\Models\Meeting;
 
 class MeetingController extends Controller
 {
     public function index()
     {
-        $product = Product::orderBy('created_at', 'DESC')->get();
-        return view('products.index', compact('product'));
+        $meeting = meeting::orderBy('created_at', 'DESC')->get();
+        return view('meeting.index', compact('meeting'));
     }
 
     public function create()
     {
-        return view('products.create');
+        return view('meeting.create');
     }
 
     public function store(Request $request)
@@ -27,26 +27,26 @@ class MeetingController extends Controller
             'organized_by'     => 'required|string|max:255',
         ]);
 
-        Product::create([
+        meeting::create([
             'meeting_location' => $request->meeting_location,
             'meeting_title'    => $request->meeting_title,
             'meeting_time'     => $request->meeting_time,
             'organized_by'     => $request->organized_by,
         ]);
 
-        return redirect()->route('products')->with('success', 'Meeting created successfully.');
+        return redirect()->route('meeting')->with('success', 'Meeting created successfully.');
     }
 
     public function show(string $id)
     {
-        $product = Product::findOrFail($id);
-        return view('products.show', compact('product'));
+        $meeting = meeting::findOrFail($id);
+        return view('meeting.show', compact('meeting'));
     }
 
     public function edit(string $id)
     {
-        $product = Product::findOrFail($id);
-        return view('products.edit', compact('product'));
+        $meeting = meeting::findOrFail($id);
+        return view('meeting.edit', compact('meeting'));
     }
 
     public function update(Request $request, string $id)
@@ -58,22 +58,22 @@ class MeetingController extends Controller
             'organized_by'     => 'required|string|max:255',
         ]);
 
-        $product = Product::findOrFail($id);
-        $product->update([
+        $meeting = meeting::findOrFail($id);
+        $meeting->update([
             'meeting_location' => $request->meeting_location,
             'meeting_title'    => $request->meeting_title,
             'meeting_time'     => $request->meeting_time,
             'organized_by'     => $request->organized_by,
         ]);
 
-        return redirect()->route('products')->with('success', 'Meeting updated successfully.');
+        return redirect()->route('meeting')->with('success', 'Meeting updated successfully.');
     }
 
     public function destroy(string $id)
     {
-        $product = Product::findOrFail($id);
-        $product->delete();
+        $meeting = meeting::findOrFail($id);
+        $meeting->delete();
 
-        return redirect()->route('products')->with('success', 'Meeting deleted successfully.');
+        return redirect()->route('meeting')->with('success', 'Meeting deleted successfully.');
     }
 }

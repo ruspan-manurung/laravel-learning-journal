@@ -9,9 +9,6 @@ use App\Http\Controllers\ProfileController;
 // Public route
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
-
 // Authentication Routes
 Route::controller(AuthController::class)->group(function () {
     Route::get('register', 'register')->name('register');
@@ -37,14 +34,24 @@ Route::middleware('auth')->group(function () {
     //     return view('dashboard');
     // })->name('dashboard');
 
-    Route::controller(MeetingController::class)->prefix('products')->group(function () {
-        Route::get('', 'index')->name('products');
-        Route::get('create', 'create')->name('products.create');
-        Route::post('store', 'store')->name('products.store');
-        Route::get('show/{id}', 'show')->name('products.show');
-        Route::get('edit/{id}', 'edit')->name('products.edit');
-        Route::put('edit/{id}', 'update')->name('products.update');
-        Route::delete('destroy/{id}', 'destroy')->name('products.destroy');
+    Route::controller(MeetingController::class)->prefix('meeting')->group(function () {
+        Route::get('', 'index')->name('meeting');
+        Route::get('create', 'create')->name('meeting.create');
+        // Route::post('store', 'store')->name('meeting.store');
+        Route::get('show/{id}', 'show')->name('meeting.show');
+        Route::get('edit/{id}', 'edit')->name('meeting.edit');
+        Route::put('edit/{id}', 'update')->name('meeting.update');
+        Route::delete('destroy/{id}', 'destroy')->name('meeting.destroy');
+    });
+
+        Route::controller(DashboardController::class)->prefix('dashboard')->group(function () {
+        Route::get('', 'index')->name('dashboard.index');
+        Route::get('create', 'create')->name('dashboard.create');
+        Route::post('store', 'store')->name(name: 'dashboard.store');
+        Route::get('show/{id}', 'show')->name('dashboard.show');
+        Route::get('edit/{id}', 'edit')->name('dashboard.edit');
+        Route::put('edit/{id}', 'update')->name('dashboard.update');
+        Route::delete('destroy/{id}', 'destroy')->name('dashboard.destroy');
     });
 
 });
