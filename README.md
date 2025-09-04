@@ -1,1 +1,1 @@
-Learning Journal Laravel
+<h1> Learning Journal Laravel </h1>
